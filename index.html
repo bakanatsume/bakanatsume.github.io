@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="customstyle/style.css">
+
+</head>
+
+<body>
+
+    <div id="loading">
+        <h1>loading ......</h1>
+    </div>
+    <div class="align">
+        
+    </div>
+    <div id="profile" class="align" hidden>
+
+        <img id="pp" alt="Profile Picture">
+
+        <h1 id="name"></h1>
+
+        You can find my more works <a id="githublink"> here ... </a> 
+
+        <h1>My awesome projects</h1>
+
+        <div>
+            <a id="projects"> lets go</a>
+        </div>
+        
+    </div>
+
+    <script>
+        fetch("https://api.github.com/users/bakanatsume")
+        .then(res => res.json())
+        .then(function(data){
+            console.log(data)
+
+            document.getElementById('pp').src=data['avatar_url']
+            document.getElementById('name').textContent=data['bio']
+
+            document.getElementById('githublink').href=data['html_url']
+
+            document.getElementById('projects').href=data['repos_url']
+
+            document.getElementById('profile').hidden= false
+            document.getElementById('loading').hidden= true
+        })
+        
+    </script>
+
+    
+</body>
+</html>
