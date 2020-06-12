@@ -40,15 +40,12 @@
         <div id="project">
             
         </div>
-
-        <button id="previous">Previous</button>
-        <button id="next">Next</button>
         
     </div>
 
     <script>
 
-        const b = document.querySelector("#project")  //get elemetbyId
+        const b = document.querySelector("#project")  //get elemetbyId and selects the id
 
         fetch("https://api.github.com/users/bakanatsume")
         .then(response => response.json())
@@ -66,7 +63,7 @@
 
 
         // fetch("https://api.github.com/users/bakanatsume/repos")
-        fetch("https://api.github.com/users/bakanatsume/repos?page=1&per_page=3") //pagination shows 5 repos only
+        fetch("https://api.github.com/users/bakanatsume/repos?page=1&per_page=5") //pagination shows 5 repos only
         .then(res => res.json())
         .then(function(data){
             console.log(data);
@@ -80,7 +77,7 @@
 
         function projectCard(a){
 
-            const c = document.createElement('div')
+            const c = document.createElement('div') //for line by line div
 
             b.appendChild(c);
             
