@@ -5,34 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="customstyle/style.css">
-
 </head>
 
 <body>
 
     <div id="loading">
-        <h1>loading ......</h1>
+        <h1>Loading ...</h1>
+    </div>
+
+
+    <div class="portfolio">   
+        <h1>My Portfolio</h1>
+        
     </div>
 
     <div id="profile" class="align" hidden>
+        <div>
+            <img id="pp" alt="Profile Picture">
+        </div>
 
-        <img id="pp" alt="Profile Picture">
+        <div>
+            <h1 id="name"></h1>
+        </div>
 
-        <h1 id="name"></h1>
+        <div class="gitlink">
+            You can find my more works <a id="githublink"> here ... </a>
+        </div>
 
-        You can find my more works <a id="githublink"> here ... </a> 
-
-        <h1>My awesome projects</h1>
+        <div class="projecthead">
+            <h1>My Repos of github</h1>
+        </div>
+        
 
         <div id="project">
             
         </div>
+
+        <button id="previous">Previous</button>
+        <button id="next">Next</button>
         
     </div>
 
     <script>
 
-        const b = document.querySelector("#project")  //getelemetbyId
+        const b = document.querySelector("#project")  //get elemetbyId
 
         fetch("https://api.github.com/users/bakanatsume")
         .then(response => response.json())
@@ -48,8 +64,8 @@
         })
 
 
-        fetch("https://api.github.com/users/bakanatsume/repos")
-        // fetch("https://api.github.com/users/bakanatsume/repos?page=1&per_page=3")
+        // fetch("https://api.github.com/users/bakanatsume/repos")
+        fetch("https://api.github.com/users/bakanatsume/repos?page=1&per_page=3") //pagination shows 5 repos only
         .then(res => res.json())
         .then(function(data){
             console.log(data);
@@ -69,9 +85,15 @@
             
             c.innerHTML = `<p>${a}`;
         }
+        
 
     </script>
-
+    <footer>
+        <a href="www.facebook.com"><img class="social-media-icon" src="images/facebook.png" alt="facebook"></a>
+        <a href="www.instagram.com"><img class="social-media-icon" src="images/instagram.png" alt="instagram"></a>
+        <a href="www.gmail.com"><img class="social-media-icon" src="images/email.png" alt="gmail"></a>
+        <a href="www.linkedin.com"><img class="social-media-icon" src="images/linkedin.png" alt="linkedin"></a>
+    </footer>
     
 </body>
 </html>
